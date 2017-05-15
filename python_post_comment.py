@@ -1,8 +1,9 @@
 import requests
 import json
+import base64
 
 USER = 'theSloopJohnB'
-PW = 'PW_GOES_HERE'
+PW = 'REAL_PASSWORD'
 
 
 MY_AUTH = requests.auth.HTTPBasicAuth(USER, PW)
@@ -29,8 +30,10 @@ def post_comment(url, message, picture):
     r = requests.post('https://api.github.com/repos/theSloopJohnB/thesloopjohnb/issues/4/comments',data=body, auth=MY_AUTH)
 
 def main():
-    file_name = 'TEMP.txt'
+    file_name = 'upload.png'
     encoded_file = read_picture(file_name)
     file_url = post_file(encoded_file, file_name)
     pullRequest = 'https://api.github.com/repos/theSloopJohnB/thesloopjohnb/issues/4/comments'
     post_comment(pullRequest, 'Picture', file_url)
+
+main()
