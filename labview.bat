@@ -1,14 +1,15 @@
-SET vi1=%~f1
-SET vi2=%~f2
+@SET vi1=%~f1
+@SET vi2=%~f2
 
-REM only run if the file is a vi.
+@REM only run if both files are VIs.
 
-if "%vi1:~-3%" == ".vi" GOTO :DIFF_VI
-
+@if "%vi1:~-3%" == ".vi" (
+    if "%vi2:~-3%" == ".vi" GOTO :DIFF_VI
+)
 GOTO :END
 
 
 :DIFF_VI
-    "C:\Program Files (x86)\National Instruments\LabVIEW 2014\LabVIEW.exe" C:\Users\nitest\Documents\GitHub\LabVIEW-Diff\Main.vi -- "%vi1%" "%vi2%" C:\Users\nitest\temp
+    labview-cli --kill --lv-ver 2014 C:\Users\nitest\Documents\GitHub\LabVIEW-Diff\Main.vi -- "%vi1%" "%vi2%"  C:\Users\nitest\temp
 
 :END
