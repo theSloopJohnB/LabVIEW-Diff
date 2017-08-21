@@ -21,6 +21,7 @@
 				<Item Name="Check if File or Folder Exists.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/libraryn.llb/Check if File or Folder Exists.vi"/>
 				<Item Name="Check Special Tags.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Check Special Tags.vi"/>
 				<Item Name="Clear Errors.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Clear Errors.vi"/>
+				<Item Name="CLI.lvclass" Type="LVClass" URL="/&lt;vilib&gt;/Wiresmith Technology/LabVIEW CLI/CLI Class/CLI.lvclass"/>
 				<Item Name="Combine PNGs stacked array.vi" Type="VI" URL="/&lt;vilib&gt;/lvrevbrd/Image Manipulation/Combine PNGs stacked array.vi"/>
 				<Item Name="Combine PNGs two columns.vi" Type="VI" URL="/&lt;vilib&gt;/lvrevbrd/Image Manipulation/Combine PNGs two columns.vi"/>
 				<Item Name="Convert property node font to graphics font.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Convert property node font to graphics font.vi"/>
