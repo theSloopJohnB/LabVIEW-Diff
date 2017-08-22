@@ -1,5 +1,6 @@
-@SET vi1=%~f1
-@SET vi2=%~f2
+SET vi1=%~f1
+SET vi2=%~f2
+SET working_dir=%~f3
 
 @REM only run if both files are VIs.
 
@@ -8,8 +9,6 @@
 )
 GOTO :END
 
-
 :DIFF_VI
-    labview-cli --kill --lv-ver 2014 C:\Users\nitest\Documents\GitHub\LabVIEW-Diff\Main.vi -- "%vi1%" "%vi2%"  C:\Users\nitest\temp
-
+    labview-cli --kill --lv-ver 2014 C:\jenkins-buildsystem\lvDiff.vi -- "%vi1%" "%vi2%" "%working_dir%"
 :END
