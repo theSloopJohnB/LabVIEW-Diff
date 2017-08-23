@@ -6,7 +6,7 @@ import sys
 import os
 import logging
 import json
-
+import post_pics_to_pr
 
 
 _moduleLogger = logging.getLogger(__name__)
@@ -14,7 +14,7 @@ _moduleLogger = logging.getLogger(__name__)
 
 def _parse_options(args):
     import optparse
-    parser = optparse.OptionParser("usage: %prog [options] TOKEN FILE REPO UPLOAD PULL_REQUEST")
+    parser = optparse.OptionParser("usage: %prog [options] TOKEN PICS PR INFO")
 
     # Setup parser
     parser.add_option(
@@ -24,30 +24,24 @@ def _parse_options(args):
         help="Github Access token needed to perform write operations"
     )
     parser.add_option(
-        "-f", "--file-path",
-        dest="filePath",
-        metavar="FILE",
-        help="Path to the local file you want to upload"
+        "-d", "--pic-dir",
+        dest="picDir",
+        metavar="PICS",
+        help="Absolute path to the directory containing the pictures you want to upload"
     )
     parser.add_option(
-        "-r", "--repo",
-        dest="repo",
-        metavar="REPO",
-        help="Github Repository where file should be uploaded to"
+        "-p", "--pull-req",
+        dest="pr",
+        metavar="PR",
+        help="Github pull request number where you want to comment"
     )
     parser.add_option(
-        "-u", "--upload-path",
-        dest="upload",
-        metavar="UPLOAD",
-        help="Path to file location relative to the repo rootwhen it is uploaded onto the repo."
+        "-i", "--info",
+        dest="info",
+        metavar="INFO",
+        help="Information about the org, repo, and pull request you are trying to use, e.g. 'LabVIEW-DCAF/IntegrationTesting/PR-13"
     )
-    parser.add_option(
-        "-p", "--pull-request",
-        dest="pullRequest",
-        metavar="PULL_REQUEST",
-        help="Github link to pull request."
-    )
-
+    
     debugGroup = optparse.OptionGroup(parser, "Debug")
     debugGroup.add_option(
         "-v", "--verbose",
@@ -89,8 +83,8 @@ def _parse_options(args):
     if args:
         parser.error("Positional arguments are not supported: %r" % (args, ))
 
-    if options.inputPath is None or not os.path.exists(options.inputPath):
-        parser.error("Input file does not exist: %r" % options.inputPath)
+    if options.picDir is None or not os.path.exists(options.picDir):
+        parser.error("Picture directory does not exist: %r" % options.picDir)
 
     return options, loggingLevel
 
@@ -105,7 +99,8 @@ def main(args):
         import doctest
         print(doctest.testmod())
         return
-
+    else:
+    	post_pics_to_pr.post_pics_to_pr(options.picDir, options.info, options.pr)
 
     return 0
 
