@@ -100,7 +100,7 @@ def main(args):
         print(doctest.testmod())
         return
     else:
-    	post_pics_to_pr.post_pics_to_pr(options.picDir, options.info, options.pr)
+    	post_pics_to_pr.post_pics_to_pr(options.token, options.picDir, options.info, options.pr)
 
     return 0
 
